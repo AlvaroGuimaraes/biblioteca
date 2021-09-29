@@ -1,5 +1,6 @@
 export class ConsultaBancoUtils{
     
+  /*método responsável por criar os filtros de consulta na base dedados*/
   static buildFiltersParameters(obj) {
     const queryFields = Object.getOwnPropertyNames(obj);
     const objtoSearch = {};

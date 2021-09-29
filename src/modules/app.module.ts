@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from '../controller/app.controller';
-import { AppService } from '../services/app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsuarioSchema } from 'src/models/usuario.model';
 import { LivroSchema } from 'src/models/livro.model';
@@ -20,12 +18,12 @@ import { ReservaService } from 'src/services/reserva.service';
                 {name: 'Livro', schema: LivroSchema},
                 {name: 'Reserva', schema: ReservaSchema}])
             ],
-  controllers: [AppController,
+  controllers: [
                 UsuarioController,
                 LivroController,
                 ReservaController
               ],
-  providers: [AppService,
+  providers: [
               UsuarioService,
               LivroService,
               ReservaService

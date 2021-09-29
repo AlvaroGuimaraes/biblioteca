@@ -1,12 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export class ReservaDto {
-    @ApiProperty()
-    readonly cpf: string;
+export class UsuarioDto{
     
     @ApiProperty()
-    readonly idLivro : any;
+    cpf : string;
     
     @ApiProperty()
-    readonly idReserva : string;
+    nome : string;
+    
+    @ApiProperty()
+    tipo : string;
 }
