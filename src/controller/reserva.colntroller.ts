@@ -21,8 +21,9 @@ export class ReservaController {
   @Get()
   @ApiResponse({type : ReservaResponseDto})
   @ApiResponse({ status: 500, description: '500 Internal Server Error.'})
-  consultarReservas() : Promise<Reserva>{
-    return this.reservaService.consultarReservas()
+  @ApiBody({type : ReservaDto})
+  consultarReservas(@Body() body) : Promise<Reserva>{
+    return this.reservaService.consultarReservas(body)
   }
 
   /*Rota responsável por cadastrar uma reserva*/

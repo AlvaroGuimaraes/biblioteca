@@ -7,6 +7,7 @@ import { ResponseUtils } from 'src/utils/response.utils';
 import * as mongoose from 'mongoose'
 import { ReservaDto } from 'src/dto/reservaDto';
 import { ReservaUtils } from 'src/utils/reserva.utils';
+import { ConsultaBancoUtils } from 'src/utils/consultaBanco.utils';
 
 
 @Injectable()
@@ -14,9 +15,10 @@ export class ReservaService {
 
   constructor(@InjectModel('Reserva') private readonly reservaModel: Model<Reserva>) {}
 
-  async consultarReservas() : Promise<Reserva> {
+  async consultarReservas(filtros) : Promise<Reserva> {
     const reservasList :any = []; /* Crio uma variavel do tipo array para armazenar as reservar*/
-    await this.reservaModel.find().then(result=>{ 
+    const filters = ConsultaBancoUtils.buildFiltersParameters(filtros); /* Aqui estou criando os parâmetros de consulta dos livros, baseado nos filtros que são enviados no body da request */
+    await this.reservaModel.find(filters).then(result=>{ 
       result.map(reserva =>{ // utilizo o map, para percorrer todo o array de reservas retornado pelo mongodb
         reservasList.push(ReservaUtils.formatarReserva(reserva)) // formato as reservas
       })
