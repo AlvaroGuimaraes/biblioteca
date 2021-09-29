@@ -8,22 +8,22 @@ import { Livro } from 'src/models/livro.model';
   constructor(private readonly livroService: LivroService) {}
 
   @Get()
-  getLivros(@Body() filtros) {
+  getLivros(@Body() filtros) : Promise<Livro>{
     return this.livroService.consultarLivros(filtros);
   }
 
   @Post()
-  async salvarLivro(@Body() livro : Livro){
+  async salvarLivro(@Body() livro : Livro) : Promise<any>{
     return await this.livroService.cadastrarLivro(livro);
   }
 
   @Put('/editarLivro')
-  async editarLivro(@Body() livro : Livro){
+  async editarLivro(@Body() livro : Livro) : Promise<any>{
     return await this.livroService.editarLivro(livro);
   }
 
   @Delete('/removerLivro/:id')
-  async removerLivro(@Param() param){
+  async removerLivro(@Param() param) : Promise<any>{
     return await this.livroService.removerLivro(param.id);
   }
 }

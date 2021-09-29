@@ -1,8 +1,15 @@
 export class ResponseUtils{
-    static criarMensagemRetorno(mensagem : string){
+    static criarMensagemRetorno(statusCode: number, mensagem : string){
         return{
-            statusCode: 200,
-            msg: mensagem
+            statusCode: statusCode || 200,
+            message: mensagem
+        }
+    }
+
+    static criarMensagemErroRetorno(statusCode: number, mensagem : string){
+        return{
+            statusCode: statusCode || 500,
+            message: mensagem
         }
     }
 }

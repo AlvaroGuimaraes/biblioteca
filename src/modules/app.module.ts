@@ -9,6 +9,8 @@ import { UsuarioController } from 'src/controller/usuario.controller';
 import { UsuarioService } from 'src/services/usuario.service';
 import { LivroController } from 'src/controller/livro.controller';
 import { LivroService } from 'src/services/livro.service';
+import { ReservaController } from 'src/controller/reserva.colntroller';
+import { ReservaService } from 'src/services/reserva.service';
 
 
 @Module({
@@ -20,11 +22,13 @@ import { LivroService } from 'src/services/livro.service';
             ],
   controllers: [AppController,
                 UsuarioController,
-                LivroController
+                LivroController,
+                ReservaController
               ],
   providers: [AppService,
               UsuarioService,
-              LivroService
+              LivroService,
+              ReservaService
             ],
 })
 export class AppModule {}
